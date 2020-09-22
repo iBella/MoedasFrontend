@@ -14,4 +14,26 @@ export class MoedaService {
       data : login
     });
   }
+
+  static trasacoesEmitidas(email, token) {
+    return axios({
+      method: 'get',
+      url: `${MoedaService.baseUrlApi}/transacoes/emitidas/${email}`,
+      headers: { 
+        'Content-Type': 'application/json',
+        'token': token 
+      }
+    });
+  }
+
+  static trasacoesRecebidas(email, token) {
+    return axios({
+      method: 'get',
+      url: `${MoedaService.baseUrlApi}/transacoes/recebidas/${email}`,
+      headers: { 
+        'Content-Type': 'application/json',
+        'token': token 
+      }
+    });
+  }
 }

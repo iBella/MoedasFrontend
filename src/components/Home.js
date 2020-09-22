@@ -1,17 +1,24 @@
-import React, {useState } from "react";
-import { MoedaService } from "../services/MoedaService";
-import { setToken } from "../actions/loginAction";
-import { LoginModel } from "../models/LoginModel";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Button, TextField } from '@material-ui/core';
+import { MoedaService } from "../services/MoedaService";
+import { LoginModel } from "../models/LoginModel";
+import { setToken, setUsuario } from "../actions/loginAction";
+import { useHistory } from "react-router-dom";
 
 export const Home = () => {
+
+    const dispatch = useDispatch();
+    let history = useHistory();
 
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
     async function logar() {
         const resultado = await MoedaService.login(new LoginModel(email, senha));
-        console.log(resultado);
+        dispatch(setToken(resultado.data.token));
+        dispatch(setUsuario(resultado.data.usuario));
+        history.push("/painel");
     }
 
     function validateForm() {
