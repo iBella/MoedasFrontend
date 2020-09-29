@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { MoedaService } from "../services/MoedaService";
+import { Container, Table, Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 
 export const Painel = () => {
 
@@ -26,26 +27,68 @@ export const Painel = () => {
     useEffect( () => {
         trasacoesEmitidasService(usuario.email, token);
         trasacoesRecebidasService(usuario.email, token);
-	});
+	}, [usuario.email, token]);
 
   	return (
-    <div>
-        <h1>{usuario.email}</h1>
-        <ul>
-            {trasacoesEmitidas.map( trasacao => (
-                <li key={trasacao.id}>   
-                    Por: {trasacao.emailEmissor} - {trasacao.quantidade} - {trasacao.motivo} - Para: {trasacao.emailDestinatario}
-                </li>
-            ))}
-	  	</ul>
-        <ul>
-            {trasacoesRecebidas.map( trasacao => (
-                <li key={trasacao.id}>   
-                    Por: {trasacao.emailEmissor} - {trasacao.quantidade} - {trasacao.motivo} - Para: {trasacao.emailDestinatario}
-                </li>
-            ))}
-	  	</ul>
-        <Link to={"/"}>Voltar</Link>
-    </div>
+        <div>
+            <Navbar bg="dark" variant="dark">
+                <Navbar.Brand href="#perfil">MoedasPuc</Navbar.Brand>
+                <Nav className="mr-auto">
+                <Nav.Link href="#perfil">Perfil</Nav.Link>
+                <Nav.Link href="#transacoes">Transações</Nav.Link>
+                </Nav>
+                <Form inline>
+                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                <Button variant="outline-light">Busca</Button>
+                </Form>
+            </Navbar>
+            <Container className="transicao-container">
+                <div className="transicao-body">
+                    <h5 className="subtitulos">Emitidas</h5>
+                    <Table striped bordered hover responsive variant="dark">
+                        <thead>
+                            <tr className="transicao-tabela">
+                                <th>Emissor</th>
+                                <th>Quantidade</th>
+                                <th>Motivo</th>
+                                <th>Destinatario</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {trasacoesEmitidas.map( trasacao => (
+                                <tr className="transicao-tabela"> 
+                                    <th>{trasacao.emailEmissor}</th>
+                                    <th>{trasacao.quantidade}</th>
+                                    <th>{trasacao.motivo}</th>
+                                    <th>{trasacao.emailDestinatario}</th>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Table>
+                    <h5 className="subtitulos">Recebidas</h5>
+                    <Table striped bordered hover responsive variant="dark">
+                        <thead>
+                            <tr className="transicao-tabela">
+                                <th>Emissor</th>
+                                <th>Quantidade</th>
+                                <th>Motivo</th>
+                                <th>Destinatario</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {trasacoesRecebidas.map( trasacao => (
+                                <tr className="transicao-tabela">   
+                                    <th>{trasacao.emailEmissor}</th>
+                                    <th>{trasacao.quantidade}</th>
+                                    <th>{trasacao.motivo}</th>
+                                    <th>{trasacao.emailDestinatario}</th>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Table>
+                    <Link to={"/"}>Voltar</Link>
+                </div>
+            </Container>
+        </div>
 	);
 };

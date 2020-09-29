@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Button, TextField } from '@material-ui/core';
 import { MoedaService } from "../services/MoedaService";
 import { LoginModel } from "../models/LoginModel";
 import { setToken, setUsuario } from "../actions/loginAction";
 import { useHistory } from "react-router-dom";
+import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 
 export const Home = () => {
 
@@ -26,30 +26,51 @@ export const Home = () => {
     }
 
     return (
-        <form className="formulario-login">
-            <div className="campo-login">
-                <TextField
-                    autoFocus
-                    label="E-mail"
-                    variant="outlined"
-                    type="email"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                />
-            </div>
-            <div className="campo-login">
-                <TextField
-                    autoFocus
-                    label="Senha"
-                    variant="outlined"
-                    type="password"
-                    value={senha}
-                    onChange={e => setSenha(e.target.value)}
-                />
-            </div>
-            <Button variant="contained" disabled={!validateForm()} onClick={() => logar()}> 
-                Logar
-            </Button>
-        </form>
+        <Container>
+            <Row className="login-row">
+                <Col md={{ span: 6, offset: 3 }}>
+                    <Form>
+                        <Form.Group>
+                            <Form.Label className="login-label">E-mail</Form.Label>
+                            <Form.Control
+                                autoFocus
+                                type="email"
+                                value={email}
+                                onChange={e => setEmail(e.target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label className="login-label">Senha</Form.Label>
+                            <Form.Control
+                                autoFocus
+                                type="password"
+                                value={senha}
+                                onChange={e => setSenha(e.target.value)}
+                            />
+                        </Form.Group>
+                        <Button className="login-btn" disabled={!validateForm()} onClick={() => logar()}> 
+                            Logar
+                        </Button>
+                    </Form>
+                </Col>
+            </Row>
+            <Row className="login-row">
+                <Col md={{ span: 6, offset: 3 }}>
+                    <Card className="login-card">
+                        <Card.Body>
+                            <Card.Title>Login Teste</Card.Title>
+                            <Card.Subtitle className="mb-2 text-muted">Login</Card.Subtitle>
+                            <Card.Text>
+                            usuario7@teste.com
+                            </Card.Text>
+                            <Card.Subtitle className="mb-2 text-muted">Senha</Card.Subtitle>
+                            <Card.Text>
+                            12345
+                            </Card.Text>
+                        </Card.Body>
+                    </Card> 
+                </Col>
+            </Row>
+        </Container>
     );
 };
