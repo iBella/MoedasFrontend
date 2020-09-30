@@ -6,21 +6,33 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import { reducers } from "./reducers";
+import storage from 'redux-persist/lib/storage'
 
 import App from "./App";
+import { persistStore, persistReducer } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
 
+const persistConfig = {
+    key: "moedaRoot",
+    storage
+};
+const persistentedReducer = persistReducer(persistConfig, reducers);
 const store = createStore(
-    reducers,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    persistentedReducer
 );
+const persistor = persistStore(store);
+
+//window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
 const rootElement = document.getElementById("root");
 
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
+        <PersistGate loading={null} persistor={persistor}>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </PersistGate>
     </Provider>,
     rootElement
 );
