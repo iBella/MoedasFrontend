@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 html,body{
-  background-image: url('http://getwallpapers.com/wallpaper/full/b/f/1/247499.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  background-color: black;
   height: 100%;
   font-family: 'Numans', sans-serif;
 }
@@ -37,6 +37,32 @@ html,body{
   text-align: center;
 }
 
+.cadastro-label {
+  color: white;
+}
+
+.cadastro-btn {
+  margin-top: 40px;
+  background-color: #209b07;
+  width: 100%;
+  cursor: pointer;
+  border-color: #209b07;
+}
+
+.cadastro-btn:hover {
+  margin-top: 40px;
+  background-color: #4bad37;
+  border-color: #4bad37;
+  width: 100%;
+  cursor: pointer;
+}
+
+.cadastro-btn:disabled {
+  background-color: #209b07;
+  border-color: #4bad37;
+  opacity: 0.6;
+}
+
 .transicao-tabela {
   color: white;
 }
@@ -47,4 +73,9 @@ html,body{
 
 .transicao-body {
   padding-top: 20px;
+}
+
+.usuario {
+  text-align: center;
+  color: antiquewhite;
 }

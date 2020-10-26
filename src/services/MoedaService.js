@@ -15,6 +15,40 @@ export class MoedaService {
     });
   }
 
+  static cadastrar(cadastro) {
+    return axios({
+      method: 'post',
+      url: `${MoedaService.baseUrlApi}/usuarios`,
+      headers: { 
+        'Content-Type': 'application/json'
+      },
+      data : cadastro
+    });
+  }
+
+  static doar(transacao, token) {
+    return axios({
+      method: 'post',
+      url: `${MoedaService.baseUrlApi}/transacoes`,
+      headers: { 
+        'Content-Type': 'application/json',
+        'token': token 
+      },
+      data : transacao
+    });
+  }
+
+  static usuarios(token) {
+    return axios({
+      method: 'get',
+      url: `${MoedaService.baseUrlApi}/usuarios`,
+      headers: { 
+        'Content-Type': 'application/json',
+        'token': token 
+      }
+    });
+  }
+
   static trasacoesEmitidas(email, token) {
     return axios({
       method: 'get',

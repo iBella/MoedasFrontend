@@ -21,6 +21,10 @@ export const Home = () => {
         history.push("/painel");
     }
 
+    async function cadastrar() {
+        history.push("/cadastro");
+    }
+
     function validateForm() {
         return email.length > 0 && senha.length > 0;
     }
@@ -50,6 +54,9 @@ export const Home = () => {
                         </Form.Group>
                         <Button className="login-btn" disabled={!validateForm()} onClick={() => logar()}> 
                             Logar
+                        </Button>
+                        <Button className="cadastro-btn" onClick={() => cadastrar()}> 
+                            Cadastrar
                         </Button>
                     </Form>
                 </Col>
