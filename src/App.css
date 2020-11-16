@@ -1,65 +1,93 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 html,body{
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-color: black;
+  width: 100%;
   height: 100%;
+  background: #ececec;
   font-family: 'Numans', sans-serif;
 }
 
+.home-cor {
+  background-color: #e9ffcc;
+}
+
+.home-row {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  padding-bottom: 20px;
+}
+
+.home-imagem {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-color: #deffb4;
+  border-radius: 50%;
+  width: 150px;
+}
+
+th {
+  font-size: smaller;
+}
+
+.th-quantidade {
+  text-align: center;
+}
+
 .subtitulos {
-  color: yellow;
+  color: black;
   width: 100%;
-  padding: 5px;
+  padding-top: 20px;
+}
+
+.login-form {
+  background-color: #ffffffcc;
+  margin-top: 5vh;
+  height: 90vh;
 }
 
 .login-row {
   padding-top: 20px;
+  padding-left: 10px;
+  padding-right: 20px;
 }
 
 .login-label {
-  color: white;
+  color: #464b49;
 }
 
 .login-btn {
-  background-color: #003cff;
+  margin-top: 20px;
   width: 100%;
   cursor: pointer;
 }
 
 .login-btn:disabled {
-  background-color: #003cff;
+  background-color: #88948f;
+  border-color: #88948f;
   opacity: 0.6;
 }
 
-.login-card {
+.cadastro-opcao {
+  margin-top: 20px;
   text-align: center;
+  font-style: italic;
 }
 
 .cadastro-label {
-  color: white;
+  color: #464b49;
 }
 
 .cadastro-btn {
-  margin-top: 40px;
-  background-color: #209b07;
-  width: 100%;
-  cursor: pointer;
-  border-color: #209b07;
-}
-
-.cadastro-btn:hover {
-  margin-top: 40px;
-  background-color: #4bad37;
-  border-color: #4bad37;
+  margin-top: 20px;
   width: 100%;
   cursor: pointer;
 }
 
 .cadastro-btn:disabled {
-  background-color: #209b07;
-  border-color: #4bad37;
+  background-color: #88948f;
+  border-color: #88948f;
   opacity: 0.6;
 }
 
@@ -76,6 +104,40 @@ html,body{
 }
 
 .usuario {
-  text-align: center;
-  color: antiquewhite;
+  font-weight: bolder;
+  font-size: smaller;
+}
+
+.usuario-titulo {
+  font-weight: bolder;
+  font-size: medium;
+}
+
+.erro-form {
+  color: red;
+  font-size: x-small;
+}
+
+.voltar {
+  cursor: pointer;
+  border-radius: 48px;
+  background-color: #464b49;
+  border: none;
+  box-shadow: 0 1px 5px rgba(0,0,0,.4);
+  font-size: 20px;
+  padding: 10px;
+  color: white;
+
+  position: fixed;
+  bottom: 40px;
+  left: 20px;
+  z-index: 1;
+}
+
+.voltar:hover {
+  background-color: #808382;
+}
+
+.botao-texto {
+  padding: 20px;
 }
