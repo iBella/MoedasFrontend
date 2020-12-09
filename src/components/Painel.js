@@ -76,7 +76,7 @@ export const Painel = () => {
                         <tbody>
                             {trasacoesRecebidas.map( (trasacao, index) => (
                                 <tr key={index} className="transicao-tabela"> 
-                                    <th>{trasacao.emailDestinatario}</th>
+                                    <th>{trasacao.emailEmissor}</th>
                                     <th>{trasacao.motivo}</th>
                                     <th className="th-quantidade">{trasacao.quantidade}</th>
                                 </tr>
