@@ -21,7 +21,7 @@ export const Cadastro = () => {
 
     async function cadastrar() {
         const resultado = await MoedaService.cadastrar(new CadastroModel(nome, email, senha));
-        if(resultado.status === StatusCodes.OK){
+        if(resultado.status === StatusCodes.CREATED){
             dispatch(setToken(resultado.data.token));
             dispatch(setUsuario(resultado.data.usuario));
             history.push("/painel");
